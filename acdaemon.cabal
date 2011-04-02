@@ -1,0 +1,25 @@
+Name:                acdaemon
+Version:             0.1
+Synopsis:            Autocomplete daemon
+Homepage:            http://github.com/PeterScott/acdaemon
+License:             BSD3
+Author:              Peter Scott
+Maintainer:          Peter Scott <pjscott@iastate.edu>
+Stability:           Provisional
+Category:            Network
+Build-type:          Simple
+Cabal-version:       >=1.8
+Extra-source-files:
+  README.md
+
+Executable acdaemon
+  Main-is:           Main.hs
+  Build-depends:     base >= 4.0 && < 5,
+                     bytestring >= 0.9 && < 1.0,
+                     attoparsec >= 0.8.5.1 && < 0.9
+
+  C-sources:         cbits/trie.c
+  include-dirs:      include
+  extra-libraries:   JudyLocal
+  Ghc-options:       -Wall -fvia-C
+  cc-options:        -Wall -O2
