@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
-#include <Judy.h>
 #include <string.h>
+#include <Judy.h>
 
 /* Maximum length of keys to autocomplete. */
 #define MAX_LEN 1023
