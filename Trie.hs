@@ -4,12 +4,12 @@ module Trie (insertPair, deleteKey, autocomplete) where
 import Data.ByteString.Char8 (ByteString)
 import qualified Data.ByteString.Char8 as B
 import qualified Data.ByteString.Unsafe as B
-import qualified Data.ByteString.Lazy.Char8 as L
 import Foreign.C.Types
 import Foreign.C.String
 import Foreign.Storable
 import Foreign.Ptr
 import System.Exit (exitFailure)
+import System.IO (stderr)
 
 -- Import the functions for dealing with the huge global trie data
 -- structure from C, where they're defined.
@@ -28,9 +28,11 @@ foreign import ccall unsafe "ac_next"
 foreign import ccall unsafe "get_index"
      c_get_index :: CString -> CInt -> IO CString
 
-panic :: IO ()
-panic = do
-  putStrLn "unknown fatal error"
+
+-- | Print message to stderr and exit with code 1.
+panic :: ByteString -> IO ()
+panic msg = do
+  B.hPutStrLn stderr msg
   exitFailure
 
 -- | Insert a (string, value) pair.
@@ -38,7 +40,7 @@ insertPair :: ByteString -> Int -> IO ()
 insertPair bs value = B.unsafeUseAsCString bs go
     where go cstr = do
             status <- c_insert cstr (fromIntegral $ B.length bs) (fromIntegral value)
-            if status /= 0 then panic else return ()
+            if status /= 0 then panic "insertion failed" else return ()
 
 -- | Delete a string. Returns True if the string was successfully
 -- deleted, or False if it did not exist in the first place.
