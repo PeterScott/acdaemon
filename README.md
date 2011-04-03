@@ -17,7 +17,8 @@ To try it out, build and run it:
     $ dist/build/acdaemon/acdaemon
     Serving on port 8080
 
-Then point your web browser at http://localhost:8080/complete/lobst
+Then point your web browser at
+[http://localhost:8080/complete/lobst](http://localhost:8080/complete/lobst)
 and you will see something like this:
 
     [["lobster",0],["lobstering",0],["lobsterish",0],["lobsterlike",0],["lobsterproof",0]]
@@ -25,7 +26,7 @@ and you will see something like this:
 You can also get JSONP output if you include a `?callback=...`
 argument, such as
 
-http://localhost:8080/complete/lobst?callback=myCallback
+[http://localhost:8080/complete/lobst?callback=myCallback](http://localhost:8080/complete/lobst?callback=myCallback)
 
 How it works
 ----------
