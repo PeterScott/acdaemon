@@ -16,7 +16,13 @@ Executable acdaemon
   Main-is:           Main.hs
   Build-depends:     base >= 4.0 && < 5,
                      bytestring >= 0.9 && < 1.0,
-                     attoparsec >= 0.8.5.1 && < 0.9
+                     attoparsec >= 0.8.5.1 && < 0.9,
+                     wai >= 0.3.0 && < 0.4,
+                     blaze-builder >= 0.2.1.4 && < 0.3,
+                     warp >= 0.3.3 && < 0.4,
+                     enumerator >= 0.4.5 && < 0.5,
+                     regex-tdfa >= 1.1 && < 1.2,
+                     transformers >= 0.2 && < 0.3
 
   C-sources:         cbits/trie.c
   include-dirs:      include
