@@ -26,6 +26,6 @@ Executable acdaemon
 
   C-sources:         cbits/trie.c
   include-dirs:      include
-  extra-libraries:   JudyLocal
+  extra-libraries:   Judy
   Ghc-options:       -Wall -fvia-C -O2 -optc-O2
   cc-options:        -Wall -O2
